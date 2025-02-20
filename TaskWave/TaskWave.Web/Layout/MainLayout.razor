@@ -1,45 +1,25 @@
 ﻿@inherits LayoutComponentBase
 
-<Layout>
-    <Sider Class="sidebar">
-        <div class="logo" />
-        <Menu Theme="MenuTheme.Dark"
-        Mode="MenuMode.Inline" DefaultSelectedKeys=@(new[]{"1"})>
-            <MenuItem Key="1" Icon="@IconType.Outline.Home" RouterLink="">Home</MenuItem>
-            <MenuItem Key="2" Icon="@IconType.Outline.User" RouterLink="Counter">Counter</MenuItem>
-            <MenuItem Key="3" Icon="@IconType.Outline.User" RouterLink="Weather">Weather</MenuItem>
-        </Menu>
-    </Sider>
-    <Layout Class="site-layout">
-        <Header Class="site-layout-header">
-        </Header>
-        <Content Class="site-layout-content">
-            @Body
-        </Content>
-    </Layout>
-</Layout>
+@* Required *@
+<MudThemeProvider />
+<MudPopoverProvider />
 
-<style>
-    .sidebar {
-        height: 100vh;
-        position: sticky;
-        top: 0;
-    }
+@* Needed for dialogs *@
+<MudDialogProvider />
 
-    .logo {
-        height: 32px;
-        margin: 16px;
-    }
+@* Needed for snackbars *@
+<MudSnackbarProvider />
 
-    .site-layout .site-layout-header {
-        background: #fff;
-        padding-left: 24px;
-    }
-
-    .site-layout .site-layout-content {
-        background: #fff;
-        margin: 16px;
-        padding: 24px;
-        min-height: 280px;
-    }
-</style>
+<MudLayout>
+    <MudAppBar Elevation="1" Dense Color="Color.Primary">
+        <MudText>Task Wave</MudText>
+    </MudAppBar>
+    <MudDrawer Elevation="1" Open ClipMode="DrawerClipMode.Always" Variant="@DrawerVariant.Persistent">
+        <MudNavMenu Color="Color.Primary" Margin="Margin.Normal">
+            <MudNavLink Href="/tasks" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.ListAlt">Tasks</MudNavLink>
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent Class="px-8 pt-18 pb-8">
+        @Body
+    </MudMainContent>
+</MudLayout>
