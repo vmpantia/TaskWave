@@ -1,0 +1,24 @@
+﻿<Breadcrumb>
+    <BreadcrumbItem Href="@_baseUri">Home</BreadcrumbItem>
+    @foreach (var path in _uriPaths)
+    {
+        <BreadcrumbItem Href="@($"{_baseUri}{path}")">@path</BreadcrumbItem>
+    }
+</Breadcrumb>
+
+@code {
+    [Inject] NavigationManager NavigationManager { get; set; }
+
+    private string _baseUri = string.Empty;
+    private string[] _uriPaths = [];
+
+    protected override void OnInitialized()
+    {
+        _baseUri = NavigationManager.BaseUri;
+
+        var uriPath = new Uri(NavigationManager.Uri).PathAndQuery;
+        _uriPaths = uriPath.Split('/')
+                           .Where(path => !string.IsNullOrEmpty(path))
+                           .ToArray();
+    }
+}

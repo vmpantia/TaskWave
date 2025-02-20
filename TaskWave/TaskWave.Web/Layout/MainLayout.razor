@@ -4,7 +4,7 @@
     <Sider Class="sidebar">
         <div class="logo" />
         <Menu Theme="MenuTheme.Dark"
-              Mode="MenuMode.Inline" DefaultSelectedKeys=@(new[]{"1"})>
+        Mode="MenuMode.Inline" DefaultSelectedKeys=@(new[]{"1"})>
             <MenuItem Key="1" Icon="@IconType.Outline.Home" RouterLink="">Home</MenuItem>
             <MenuItem Key="2" Icon="@IconType.Outline.User" RouterLink="Counter">Counter</MenuItem>
             <MenuItem Key="3" Icon="@IconType.Outline.User" RouterLink="Weather">Weather</MenuItem>
@@ -13,11 +13,6 @@
     <Layout Class="site-layout">
         <Header Class="site-layout-header">
         </Header>
-        <Breadcrumb Class="site-layout-bread-crumb">
-            <BreadcrumbItem>Home</BreadcrumbItem>
-            <BreadcrumbItem>List</BreadcrumbItem>
-            <BreadcrumbItem>App</BreadcrumbItem>
-        </Breadcrumb>
         <Content Class="site-layout-content">
             @Body
         </Content>
@@ -39,10 +34,6 @@
     .site-layout .site-layout-header {
         background: #fff;
         padding-left: 24px;
-    }
-
-    .site-layout .site-layout-bread-crumb {
-        margin: 16px 16px 0px 16px;
     }
 
     .site-layout .site-layout-content {
